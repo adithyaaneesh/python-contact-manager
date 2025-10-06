@@ -10,7 +10,7 @@ def user_register(request):
         form_data = UserRegistrationForm(request.POST)
         if form_data.is_valid:
             form_data.save()
-            return redirect ('login')
+            return redirect ('register')
     else:
         form_data = UserRegistrationForm()
     return render(request,'register.html',{"forms":form_data})

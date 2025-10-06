@@ -7,9 +7,9 @@ class UserRegistrationForm(forms.ModelForm):
     role = forms.ChoiceField(choices=Contact.ROLE_CHOICES)
     password = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(widget=forms.PasswordInput)
-class Meta:
-    model = User
-    fields = ['username' , 'email']
+    class Meta:
+        model = User
+        fields = ['username' , 'email']
 
 
     def clean(self):
