@@ -7,13 +7,16 @@
 </head>
 <body>
     <h2>Edit Contact</h2>
-    <form action="" method="post">
+    <form method="post">
         {% csrf_token %}
-        <input type="text" name="fname" placeholder="First Name"><br>
-        <input type="email" name="email" placeholder="Email"><br>
-        <input type="number" name="phonenum" placeholder="Phone Number"><br>
+        <label>Full Name:</label>
+        <input type="text" name="fname" value="{{ contact.firstname }}" required><br><br>
+        <label>Email:</label>
+        <input type="email" name="email" value="{{ contact.email }}"><br><br>
+        <label>Phone Number:</label>
+        <input type="text" name="phonenum" value="{{ contact.phonenumber }}" required><br><br>
         <a href="{% url 'home' %}">Cancel</a>
-        <button type="submit">Make Changes</button>
+        <button type="submit">Save Changes</button>
     </form>
 </body>
 </html>

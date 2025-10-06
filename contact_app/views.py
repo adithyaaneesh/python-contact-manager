@@ -46,7 +46,7 @@ def edit_contact(request,contact_id):
             contact.phonenumber = phone_num
             contact.save()
             return redirect('home')
-    return render(request,'edit.html',{'contacts':contact})
+    return render(request,'edit.html',{'contact':contact})
 
 
 def delete_contact(request, contact_id):

@@ -9,9 +9,12 @@
     <h2>Add New Contact</h2>
     <form action="" method="post">
         {% csrf_token %}
-        <input type="text" name="fname" placeholder="First Name"><br>
-        <input type="email" name="email" placeholder="Email"><br>
-        <input type="number" name="phonenum" placeholder="Phone Number"><br>
+        <label>First Name: </label>
+        <input type="text" name="fname" required><br><br>
+        <label>Email: </label>
+        <input type="email" name="email"><br><br>
+        <label>Phone Number: </label>
+        <input type="number" name="phonenum" required><br><br>
         <a href="{% url 'home' %}">Cancel</a>
         <button type="submit">Add Contact</button>
     </form>
