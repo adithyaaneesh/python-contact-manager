@@ -11,7 +11,6 @@ class UserRegistrationForm(forms.ModelForm):
         model = User
         fields = ['username' , 'email']
 
-
     def clean(self):
         data = super().clean()
         if data.get('password') != data.get('password2'):

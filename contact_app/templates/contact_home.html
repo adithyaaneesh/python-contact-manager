@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contact List</h1>
+    <a href="{% url 'addcontact' %}">Add Contact</a>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.firstname }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phonenumber }}</td>
+                <td>
+                    <span><a href="{% url 'edit' contact.id %}">Update</a></span>
+                    <span><a href="{% url 'delete' contact.id %}">Delete</a></span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
