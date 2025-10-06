@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <h2>Edit Contact</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="fname" placeholder="First Name"><br>
+        <input type="email" name="email" placeholder="Email"><br>
+        <input type="number" name="phonenum" placeholder="Phone Number"><br>
+        <a href="{% url 'home' %}">Cancel</a>
+        <button type="submit">Make Changes</button>
+    </form>
+</body>
+</html>

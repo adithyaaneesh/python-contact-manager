@@ -4,8 +4,6 @@ from .models import Contact
 from django.contrib.auth.decorators import login_required 
 
 
-
-
 # Create your views here.
 def user_register(request):
     if request.method == 'POST':
@@ -38,67 +36,22 @@ def contact_list(request):
 
 def edit_contact(request,contact_id):
     contact = get_object_or_404(Contact,id=contact_id)
-
     if request.method == "POST":
         fname = request.POST.get('fname')
         email = request.POST.get('email')
         phone_num = request.POST.get('phonenum')
-        status = request.POST.get('status')
         if fname and phone_num:
             contact.firstname = fname
             contact.email = email
             contact.phonenumber = phone_num
-            # contact.action = "status" in request.POST 
             contact.save()
             return redirect('home')
     return render(request,'edit.html',{'contacts':contact})
 
 
+def delete_contact(request, contact_id):
+    contact = get_object_or_404(Contact, id=contact_id)
+    contact.delete()
+    return redirect('home')
 
 
-def delete_contact(request):
-    return
-
-
-
-
-
-
-
-
-
-
-
-# def complete_task(request,task_id):
-#     task = get_object_or_404(Todo,id=task_id)
-#     task.complete_task = True
-#     task.save()
-#     return redirect('home')
-
-# def update_task(request,task_id):
-#     task = get_object_or_404(Todo,id=task_id)
-
-#     if request.method == "POST":
-#         title = request.POST.get('title')
-#         description = request.POST.get('description')
-#         due_date = request.POST.get('due_date')
-#         status = request.POST.get('status')
-#         today = date.today()
-#         if due_date and date.fromisoformat(due_date) < date.today():
-#             return render(request, 'update_task.html', {
-#                 'error': 'Due date cannot be in the past',
-#                 'today': today
-#             })
-#         if title and description:
-#             task.title =title
-#             task.description = description
-#             task.due_date = due_date if due_date else None
-#             task.complete_task = "status" in request.POST 
-#             task.save()
-#             return redirect('home')
-#     return render(request,'update_task.html',{'task':task})
-
-# def delete_task(request,task_id):
-#     task = get_object_or_404(Todo,id=task_id)
-#     task.delete()
-#     return redirect('home')
