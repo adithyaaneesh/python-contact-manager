@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm
 from .models import Contact
+from django.contrib.auth.models import User 
+
 
 
 def user_register(request):
@@ -41,9 +43,6 @@ def user_logout(request):
     return redirect('login')
 
 
-@login_required
-def admin_dashboard(request):
-    return render(request, 'admin_dashboard.html' )
 
 @login_required
 def contact_list(request):
@@ -98,5 +97,23 @@ def delete_contact(request, contact_id):
 def user_profile(request):
     user = request.user
     return render(request, 'user_profile.html',{'user':user})
+
+@login_required
+def admin_dashboard(request):
+    if not request.user.is_superuser:
+        return redirect('home') 
+    user_only = User.objects.filter(is_superuser=False)
+    users = User.objects.all()
+    contacts = Contact.objects.all()
+
+    context = {
+        'user_only': user_only,
+        'users': users,
+        'contacts': contacts,
+        'user_only_count':user_only.count(),
+        'user_count': users.count(),
+        'contact_count': contacts.count(),
+    }
+    return render(request, 'admin_dashboard.html', context)
 
 

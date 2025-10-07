@@ -144,14 +144,19 @@
             <div class="card users">
                 <i class="fa-solid fa-users"></i>
                 Users
-                <div class="count-number">{{ users.count }}</div>
+                <div class="count-number">{{ user_count }}</div>
             </div>
+
             <div class="card users">
                 <i class="fa-solid fa-address-book"></i>
                 Contacts
-                <div class="count-number">{{ contacts.count }}</div>
+                <div class="count-number">{{ contact_count }}</div>
             </div>
-
+            <div class="card users">
+                <i class="fa-solid fa-users"></i>
+                Non-Admin Users
+                <div class="count-number">{{ user_only_count }}</div>
+            </div>
         </div>
     </div>
 </div>
