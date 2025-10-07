@@ -8,7 +8,7 @@
 <body>
     <h1>Contact List</h1>
     <a href="{% url 'addcontact' %}">Add Contact</a>
-    <a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'logout' %}" onclick="return confirmLogout()">Logout</a>
     <a href="{% url 'userprofile' %}">Profile</a>
 
     <table border="1px">
@@ -34,6 +34,11 @@
             {% endfor %}
         </tbody>
     </table>
+<script>
+    function confirmLogout() {
+        return confirm("Are you sure you want to log out?");
+    }
+</script>
 
 </body>
 </html>
