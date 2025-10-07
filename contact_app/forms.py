@@ -1,20 +1,22 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 from .models import Contact
 
 
 class UserRegistrationForm(forms.ModelForm):
-    role = forms.ChoiceField(choices=Contact.ROLE_CHOICES)
+    phone = forms.CharField(widget=forms.NumberInput)
     password = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(widget=forms.PasswordInput)
+
     class Meta:
         model = User
-        fields = ['username' , 'email']
+        fields = ['username', 'email']
 
     def clean(self):
         data = super().clean()
         if data.get('password') != data.get('password2'):
-            raise forms.ValidationError("Password do not match")
+            raise forms.ValidationError("Passwords do not match")
         return data
 
     def save(self, commit=True):
@@ -23,7 +25,14 @@ class UserRegistrationForm(forms.ModelForm):
         if commit:
             user.save()
             Contact.objects.create(
-                name=user,
-                role=self.cleaned_data['role']
+                user=user,
+                firstname=user.username,
+                email=user.email,
+                phonenumber=self.cleaned_data['phone']
             )
         return user
+
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
