@@ -1,83 +1,14 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Account Details</h2>
-
-        <span> Username:</span>
-        <span>{{ user.username }}</span>
-
-        <span >First Name:</span>
-        <span>{% if user.first_name %}{{ user.first_name }}{% else %}N/A{% endif %}</span> 
-
-        <span>Email:</span>
-        <span>{{ user.email }}</span>
-        
-        <span> Status:</span>
-        <span>
-            {% if user.is_active %}
-            <span>Active</span>
-            {% else %}
-            <span>Inactive</span>
-            {% endif %}
-        </span>
-        <span> Role:</span>
-        <span>
-            {% if user.is_superuser %}
-            <span>Administrator</span>
-            {% else %}
-            <span>Standard User</span>
-            {% endif %}
-        </span>
-    </div>
-    <a href="{% url 'contact_list' %}" >Back to Contacts</a>
-    <a href="{% url 'edit_profile' %}">Edit Profile</a>
-</div>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Details</title>
+    <title>User Details</title>
 </head>
 <body>
-    <h2>Account Details</h2>
-
-    <p><strong>Username:</strong> {{ user.username }}</p>
-
-    <p><strong>First Name:</strong>
-        {% if user.first_name %}
-            {{ user.first_name }}
-        {% else %}
-            N/A
-        {% endif %}
-    </p>
-
-    <p><strong>Email:</strong> {{ user.email }}</p>
-
-    <p><strong>Status:</strong>
-        {% if user.is_active %}
-            Active
-        {% else %}
-            Inactive
-        {% endif %}
-    </p>
-
-    <p><strong>Role:</strong>
-        {% if user.is_superuser %}
-            Administrator
-        {% else %}
-            Standard User
-        {% endif %}
-    </p>
-
-    <a href="{% url 'contact_list' %}">Back to Contacts</a>
+    <h2>User Details</h2>
+    <p>Name: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <a href="{% url 'home' %}">Back to Contacts</a>
 </body>
 </html>
