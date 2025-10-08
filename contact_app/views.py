@@ -116,4 +116,6 @@ def admin_dashboard(request):
     }
     return render(request, 'admin_dashboard.html', context)
 
-
+@login_required
+def admin_profile(request):
+    return render(request,'admin_profile.html')

@@ -133,31 +133,20 @@
 </div>
 <div class="layout">
     <div class="sidebar">
-         <a href="{% url 'admindashboard' %}" class="active"><i class="fa-solid fa-home"></i> Dashboard</a>
-        <a href="{% url 'adminprofile' %}"><i class="fa-solid fa-user"></i> Profile</a>
+         <a href="{% url 'admindashboard' %}"><i class="fa-solid fa-home"></i> Dashboard</a>
+        <a href="{% url 'adminprofile' %}" class="active"><i class="fa-solid fa-user"></i> Profile</a>
         <a href=""><i class="fa-solid fa-address-book"></i> Contacts</a>
         <a href=""><i class="fa-solid fa-users"></i> Manage Users</a>
     </div>
     <div class="content">
-        <h2>Dashboard Summary</h2>
+        <h2>Admin Profile</h2>
         <div class="content-cards">
             <div class="card users">
-                <i class="fa-solid fa-users"></i>
-                Users
-                <div class="count-number">{{ user_count }}</div>
+                <i class="fa-solid fa-user"></i>
+                <p>Name: {{ user.username }}</p>
+                <p>Email: {{ user.email }}</p>
+                <a href="{% url 'admindashboard' %}">Back to Dashboard</a>
             </div>
-
-            <div class="card users">
-                <i class="fa-solid fa-address-book"></i>
-                Contacts
-                <div class="count-number">{{ contact_count }}</div>
-            </div>
-            <div class="card users">
-                <i class="fa-solid fa-users"></i>
-                Non-Admin Users
-                <div class="count-number">{{ user_only_count }}</div>
-            </div>
-        </div>
     </div>
 </div>
 <script>
