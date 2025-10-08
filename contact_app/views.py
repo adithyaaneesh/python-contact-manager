@@ -119,10 +119,17 @@ def admin_dashboard(request):
 @login_required
 def admin_profile(request):
     return render(request,'admin_profile.html')
+
 @login_required
 def admin_contact(request):
     contacts = Contact.objects.filter(user__is_superuser=False)
     return render(request,'admin_contacts.html',{'contacts':contacts})
+
 @login_required
 def admin_users(request):
-    return render(request,'admin_contacts.html')
+    contacts = Contact.objects.filter(user__is_superuser=False)
+    # users = User.objects.all()
+    # context = {
+    #     'users':users
+    # }
+    return render(request,'admin_users.html',{'contacts':contacts})

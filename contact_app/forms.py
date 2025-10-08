@@ -24,12 +24,6 @@ class UserRegistrationForm(forms.ModelForm):
         user.set_password(self.cleaned_data['password'])
         if commit:
             user.save()
-            Contact.objects.create(
-                user=user,
-                firstname=user.username,
-                email=user.email,
-                phonenumber=self.cleaned_data['phone']
-            )
         return user
 
 

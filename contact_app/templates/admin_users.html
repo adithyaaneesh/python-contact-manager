@@ -134,17 +134,37 @@
 <div class="layout">
     <div class="sidebar">
          <a href="{% url 'admindashboard' %}"><i class="fa-solid fa-home"></i> Dashboard</a>
-        <a href="{% url 'adminprofile' %}" class="active"><i class="fa-solid fa-user"></i> Profile</a>
-        <a href="{% url 'admincontacts' %}"><i class="fa-solid fa-address-book"></i> Contacts</a>
-        <a href="{% url 'adminusers' %}"><i class="fa-solid fa-users"></i> Manage Users</a>
+        <a href="{% url 'adminprofile' %}"><i class="fa-solid fa-user"></i> Profile</a>
+        <a href="{% url 'admincontacts' %}" ><i class="fa-solid fa-address-book"></i> Contacts</a>
+        <a href="{% url 'adminusers' %}" class="active"><i class="fa-solid fa-users"></i> Manage Users</a>
     </div>
     <div class="content">
-        <h2>Admin Profile</h2>
+        <h2>All Users</h2>
         <div class="content-cards">
             <div class="card users">
-                <i class="fa-solid fa-user"></i>
-                <p>Name: {{ user.username }}</p>
-                <p>Email: {{ user.email }}</p>
+                <table border="1px">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Email</th>
+                            <!-- <th>Phone Number</th> -->
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contact in contacts %}
+                        <tr>
+                            <td>{{ contact.user.username }}</td>
+                            <td>{{ contact.user.email }}</td>
+                            <!-- <td>{{ contact.user.phonenumber }}</td> -->
+                            <td>
+                                <span><a href="{% url 'edit' contact.id %}">Update</a></span>
+                                <span><a href="{% url 'delete' contact.id %}">Delete</a></span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
     </div>
 </div>
