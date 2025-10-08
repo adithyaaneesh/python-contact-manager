@@ -135,8 +135,8 @@
     <div class="sidebar">
          <a href="{% url 'admindashboard' %}"><i class="fa-solid fa-home"></i> Dashboard</a>
         <a href="{% url 'adminprofile' %}" class="active"><i class="fa-solid fa-user"></i> Profile</a>
-        <a href=""><i class="fa-solid fa-address-book"></i> Contacts</a>
-        <a href=""><i class="fa-solid fa-users"></i> Manage Users</a>
+        <a href="{% url 'admincontacts' %}"><i class="fa-solid fa-address-book"></i> Contacts</a>
+        <a href="{% url 'adminusers' %}"><i class="fa-solid fa-users"></i> Manage Users</a>
     </div>
     <div class="content">
         <h2>Admin Profile</h2>
