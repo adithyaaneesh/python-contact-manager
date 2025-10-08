@@ -154,8 +154,8 @@
                     <tbody>
                         {% for contact in contacts %}
                         <tr>
-                            <td>{{ contact.user.username }}</td>
-                            <td>{{ contact.user.email }}</td>
+                            <td>{{ contact.username }}</td>
+                            <td>{{ contact.email }}</td>
                             <!-- <td>{{ contact.user.phonenumber }}</td> -->
                             <td>
                                 <span><a href="{% url 'edit' contact.id %}">Update</a></span>

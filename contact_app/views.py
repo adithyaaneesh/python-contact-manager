@@ -127,9 +127,12 @@ def admin_contact(request):
 
 @login_required
 def admin_users(request):
-    contacts = Contact.objects.filter(user__is_superuser=False)
+    # contacts = User.objects.filter()
+    user_only = User.objects.filter(is_superuser=False)
+
     # users = User.objects.all()
-    # context = {
-    #     'users':users
-    # }
-    return render(request,'admin_users.html',{'contacts':contacts})
+    context = {
+        'contacts':user_only
+    }
+    return render(request,'admin_users.html',context)
+    # return render(request,'admin_users.html',{'contacts':contacts})
